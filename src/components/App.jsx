@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import ContactForm from './ContactForm';
-import Filter from './Filter';
-import ContactList from './ContactList';
+import ContactForm from './ContactForm/ContactForm';
+import Filter from './Filter/Filter';
+import ContactList from './ContactList/ContactList';
 import style from './App.module.css';
 
 class App extends Component {
@@ -22,12 +22,7 @@ class App extends Component {
   };
 
   changeFilter = event => {
-    const { contacts, filter } = this.state;
-    const normalizeFilter = filter.toLowerCase();
-
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizeFilter)
-    );
+    this.setState({ filter: event.currentTarget.value });
   };
 
   getVisibleContacts = () => {
